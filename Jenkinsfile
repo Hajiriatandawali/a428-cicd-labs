@@ -24,6 +24,12 @@ pipeline {
                 input message: 'Sudah selesai menggunakan React App? (Klik "Proceed" untuk mengakhiri)'
                 sh './jenkins/scripts/kill.sh'
             }
+
+            steps {
+                sh './jenkins/scripts/deliver.sh'
+                input message: 'Mohon konfirmasi sekali lagi! (Klik "Proceed" untuk mengakhiri)'
+                sh './jenkins/scripts/kill.sh'
+            }
         }
     }
 }
