@@ -18,6 +18,16 @@ pipeline {
             }
         }
 
+        stage('Manual Approval') {
+            steps {
+                input(
+                    id: 'manual-approval',
+                    message: 'Lanjutkan ke tahap Deploy?',
+                    parameters: [choice(choices: ['Proceed', 'Abort'], description: 'Pilih tindakan')]
+                )
+            }
+        }
+
         stage('Deploy') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
