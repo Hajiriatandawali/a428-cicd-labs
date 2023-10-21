@@ -20,11 +20,9 @@ pipeline {
 
         stage('Manual Approval') {
             steps {
-                input(
-                    id: 'manual-approval',
-                    message: 'Lanjutkan ke tahap Deploy?',
-                    parameters: [choice(choices: ['Proceed', 'Abort'], description: 'Pilih tindakan')]
-                )
+                    sh './jenkins/scripts/deliver.sh'
+                    input message: 'Lanjutkan ke tahap Deploy? (Klik "Proceed" untuk mengakhiri)'
+                    sh './jenkins/scripts/kill.sh'
             }
         }
 
