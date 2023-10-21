@@ -22,6 +22,7 @@ pipeline {
             steps {
                 sh './jenkins/scripts/deliver.sh'
                 input message: 'Sudah selesai menggunakan React App? (Klik "Proceed" untuk mengakhiri)'
+                sh 'sleep 60' // Menunggu selama 1 menit (60 detik)
                 sh './jenkins/scripts/kill.sh'
             }
         }
